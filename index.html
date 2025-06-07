@@ -18,12 +18,9 @@
         <aside id="leftSidebar">
           <h2>QUOTE</h2>
           <div class="box">
-            <p>I have recently updated this tool as of August 2022!</p>
-            <ul style="padding-left:10px;">
-              <li>Rewrote the JS to generate cleaner code</li>
-              <li>Rewrote the CSS in a way that hopefully makes much more sense to edit</li>
-              <li>Added a couple of new features!</li>
-              <li>Old version is still available here</li>
+            <p>That statement's not even ignorant. That statement is like ignorance resin. Like, if you just take all of the stupid and just cook it down, and then scrape just the pure ignorance. Like crystal "duh." It's like crystal "duh."
+  - Jon Stewart</p>
+      
             </ul>
           </div>
            
@@ -39,19 +36,17 @@
 
           <p>RECOMMEDNATIONS um well this is a list of things people have recommended me or shown me. Some are their own creation, some are things that have imprinted on them and they desired to share with me at some point over the years I've lived. Now you can too explore these.
 
-          <p>CREDITS it refers to crediting what has helped me to create this little website.<a href="https://sadhost.neocities.org/images/layouts/layout-maker-graphic.png" target="_blank">graphic</a> I made which hopefully explains the main structure.</p>
+          <p>CREDITS it refers to crediting what has helped me to create this little website.</p>
           
 
         </main>
         <aside id="rightSidebar">
        <h2>UPDATES</h2>
           <div class="box">
-            <p>I have recently updated this tool as of August 2022!</p>
+            <p>This website started via Github on the 7/6/2025</p>
             <ul style="padding-left:10px;">
-              <li>Rewrote the JS to generate cleaner code</li>
-              <li>Rewrote the CSS in a way that hopefully makes much more sense to edit</li>
-              <li>Added a couple of new features!</li>
-              <li>Old version is still available here</li>
+              <li>The purple theme will go from purple to green and black. I'd prefer to see something a bit less tumblrcore</li>
+              <li>Pages will be connected soon</li>
             </ul>
           </div>
            
@@ -73,7 +68,7 @@ the images as variables */
 
  :root {
   --header-image:url('https://sadhost.neocities.org/images/layouts/wp.jpeg');
-  --body-bg-image:url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
+  --body-bg-image:url('https://media1.tenor.com/m/18SBZln9s3AAAAAd/black-space-outer-space.gif');
    
    /* colors */
    --content:#43256E;
@@ -156,15 +151,15 @@ EXCEPT for the navigation */
   text-decoration:none; */
 }
 #header {
-  width:100%;
-  background-color:#5e4e8c; /* header color here! */
-  height:150px;
-  /* this is only for a background image! */
-  /* if you want to put images IN the header, 
-  you can add them directly to the <div id="header"></div> element! */
-  background-image:var(--header-image);
-  background-size:100%;
+  width: 100%;
+  height: 200px; /* taller to let the GIF breathe */
+  background-color: #000; /* fallback */
+  background-image: url('https://media1.tenor.com/m/iw7A_AqAq0kAAAAd/nyx-night.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 
 /* navigation section!! */
 #navbar {
@@ -270,12 +265,6 @@ strong { /* this styles bold text */
   background-color:#13092D;
 }
 
-/* so you wanna change the width of your page? 
-by default, the container width is 900px.
-in order to keep things responsive, take your new height,
-and then subtrack it by 100. use this new number as the 
-"max-width" value below
-*/
 
 @media only screen and (max-width: 800px) {
   #flex {
@@ -284,10 +273,7 @@ and then subtrack it by 100. use this new number as the
   aside {
     width:100%;
   }
-  /* the order of the items is adjusted here for responsiveness!
-  since the sidebars would be too small on a mobile device.
-  feel free to play around with the order!
-  */
+ 
   main {
     order:1;
   }
@@ -302,4 +288,5 @@ and then subtrack it by 100. use this new number as the
   }
 }
   </style>
+
 
