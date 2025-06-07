@@ -71,7 +71,7 @@ the images as variables */
   --body-bg-image:url('https://media1.tenor.com/m/18SBZln9s3AAAAAd/black-space-outer-space.gif');
    
    /* colors */
-   --content:#43256E;
+   color: #c6ffc6)
 }
 
 /* if you have the URL of a font, you can set it below */
@@ -115,7 +115,7 @@ body {
   background-color:#08031A;
   /* you can delete the line below if you'd prefer to not use an image */
   background-size:65px;
-  color:#fceaff;
+  color:#39FF14;
   background-image:var(--body-bg-image);
 }
 
@@ -164,7 +164,7 @@ EXCEPT for the navigation */
 /* navigation section!! */
 #navbar {
   height:40px;
-  background-color:#13092D; /* navbar color */
+  background-color:#39FF14; /* navbar color */
   width:100%;
 }
 #navbar ul {
@@ -180,7 +180,7 @@ EXCEPT for the navigation */
 
 /* navigation links*/
 #navbar li a {
-  color:#ED64F5; /* navbar text color */
+  color:#1f3f1f; /* navbar text color */
   font-weight:800;
   text-decoration:none; /* this removes the underline */
 }
@@ -197,20 +197,27 @@ EXCEPT for the navigation */
 if you want to style them separately,
 create styles for #leftSidebar and #rightSidebar */
 aside {
-  background-color:#241445;
-  width:200px;
-  padding:20px;
-  font-size:smaller; /* this makes the sidebar text slightly smaller */
-  height:600px;
-  overflow:auto;
-  
+  background-image: url('https://media1.tenor.com/m/_8z899IWIfEAAAAd/moon-star.gif'); /* Replace this with the exact image filename */
+  background-color: #1A1A1A; /* fallback in case image fails */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  width: 200px;
+  padding: 20px;
+  font-size: smaller;
+  height: 600px;
+  overflow: auto;
+  color: #000000;
+  display: block;
 }
+
 
 
 /* this is the color of the main content area,
 between the sidebars! */
 main {
-  background-color:#43256E;
+  background-color :#0A0A0A ;
   flex:1;
   padding:20px;
   order:2;
@@ -233,25 +240,25 @@ left sidebar is 1, content is 2, and right sidebar is 3! */
 }
 
 footer {
-  background-color:#13092D; /* background color for footer */
+  background-color:#1a1aff; /* background color for footer */
   width:100%;
   height:40px;
   padding:10px;
   text-align:center; /* this centers the footer text */
 }
 h1, h2, h3 {
-  color:#ED64F5;
+  color:#1a1aff;
 }
 h1  {
   font-size:25px;
 }
 strong { /* this styles bold text */
-  color:#ED64F5;
+  color:#1a1aff;
 }
 /* this is just a cool box, it's the darker colored one */
 .box {
-  background-color:#13092D;
-  border:1px solid #ED64F5;
+  background-color:#39FF14;
+  border:1px solid #0A0A0A;
   padding:10px;
 }
 
@@ -288,5 +295,6 @@ strong { /* this styles bold text */
   }
 }
   </style>
+
 
 
