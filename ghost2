@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ghost Index</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Ghost Index</h1>
+  <p>This is a list of everyone who’s crossed the threshold of relevance.</p>
+  <ul>
+    <li>Node 001 — Gone</li>
+    <li>Node 002 — Dormant</li>
+    <li>Node 003 — Peripheral</li>
+  </ul>
+  <a href="index.html">← Back to Home</a>
+</body>
+</html>
