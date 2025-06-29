@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickable Nodes</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .word {
+      cursor: pointer;
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .link {
+      display: block;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Choose the type:</h2>
+<div>
+  <span class="word" onclick="reveal('Books')">Books</span>
+  <span class="word" onclick="reveal('Articles')">Articles</span>
+  <span class="word" onclick="reveal('SORs')">SORs</span>
+</div>
+
+<div id="Books" class="hidden">
+  <span class="word" onclick="window.open('https://github.com/smicallef/spiderfoot')">Spiderfoot</span>
+  <span class="word" onclick="window.open('https://www.shodan.io')">Shodan</span>
+</div>
+
+<div id="Articles" class="hidden">
+  <span class="word" onclick="window.open('https://osintframework.com')">OSINT Framework</span>
+  <span class="word" onclick="window.open('https://github.com/jivoi/awesome-osint')">Awesome OSINT</span>
+</div>
+
+<div id="SORs" class="hidden">
+  <span class="word" onclick="window.open('https://inteltechniques.com')">Intel Techniques</span>
+  <span class="word" onclick="window.open('https://haveibeenpwned.com')">Have I Been Pwned</span>
+</div>
+
+<script>
+  function reveal(id) {
+    const section = document.getElementById(id);
+    section.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>
 
