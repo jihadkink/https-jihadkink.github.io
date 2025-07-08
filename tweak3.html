@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionable</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff99;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .word {
+      cursor: pointer;
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .link {
+      display: block;
+      margin-left: 20px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
 
+<h2>Choose the type:</h2>
+  <p>This page was set up 9/07/2025.
+<div>
+  <span class="word" onclick="reveal('1')">1</span>
+  <span class="word" onclick="reveal('2')">2</span>
+  <span class="word" onclick="reveal('3')">3</span>
+  <span class="word" onclick="reveal('4')">4</span>
+  <span class="word" onclick="reveal('5')">5</span>
+  <span class="word" onclick="reveal('6')">6</span>
+</div>
+
+<div id="1" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+
+<div id="2" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+
+<div id="3" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+  
+ <div id="4" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+  
+<div id="5" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+
+<div id="6" class="hidden">
+  <span class="word" onclick="window.open('link')">1</span>
+  <span class="word" onclick="window.open('link')">2</span>
+  <span class="word" onclick="window.open('link')">3</span>
+  <span class="word" onclick="window.open('link')">4</span>
+  <span class="word" onclick="window.open('link')">5</span>
+</div>
+  
+<script>
+  function reveal(id) {
+    const section = document.getElementById(id);
+    section.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>
