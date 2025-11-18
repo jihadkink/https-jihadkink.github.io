@@ -1,97 +1,271 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questionable</title>
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: monospace;
-      padding: 20px;
-    }
-    .word {
-      cursor: pointer;
-      text-decoration: underline;
-      margin-right: 10px;
-    }
-    .hidden {
-      display: none;
-    }
-    .link {
-      display: block;
-      margin-left: 20px;
-      margin-top: 5px;
-    }
-  </style>
+<meta charset="utf-8">
+<title>Paint + Text</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:#05060a;
+    --text:#f0f0ff;
+    --panel:#151720;
+    --border:#26293a;
+    --accent:#7b5cff;
+  }
+  body{
+    margin:0;
+    font-family:system-ui,Segoe UI,Roboto;
+    background:#05060a;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  header{
+    padding:10px 14px;
+    background:#0a0b0f;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px 14px;
+  }
+  h1{
+    font-size:16px;
+    text-transform:uppercase;
+    margin-right:20px;
+    letter-spacing:0.06em;
+  }
+  .controls{display:flex;flex-wrap:wrap;gap:12px;}
+  .group{
+    background:#11131a;
+    border:1px solid var(--border);
+    padding:4px 8px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    color:#aaa;
+  }
+  input[type=color]{width:28px;height:28px;border-radius:999px;border:1px solid var(--border);}
+  input[type=range]{width:120px;}
+  button{
+    border-radius:999px;
+    border:1px solid var(--accent);
+    background:rgba(123,92,255,0.15);
+    padding:6px 14px;
+    font-size:13px;
+    color:var(--text);
+    cursor:pointer;
+  }
+  .secondary{
+    border-color:var(--border);
+    background:#12131c;
+  }
+  main{flex:1;display:flex;padding:10px;}
+  .wrap{
+    flex:1;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#0a0d15;
+    position:relative;
+    overflow:hidden;
+  }
+  canvas{width:100%;height:100%;display:block;cursor:crosshair;touch-action:none;}
+  #textInputBox{
+    position:absolute;
+    display:none;
+    background:#000;
+    border:1px solid var(--accent);
+    padding:4px;
+    border-radius:6px;
+  }
+  #textInputBox textarea{
+    width:200px;
+    height:60px;
+    background:#11131a;
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:6px;
+    resize:none;
+    font-size:14px;
+  }
+  #textInputBox button{
+    margin-top:4px;
+    width:100%;
+    font-size:12px;
+  }
+</style>
 </head>
 <body>
 
-<h2>Choose the type:</h2>
-  <p>This page was set up 9/07/2025.
-<div>
-  <span class="word" onclick="reveal('1')">1</span>
-  <span class="word" onclick="reveal('2')">2</span>
-  <span class="word" onclick="reveal('3')">3</span>
-  <span class="word" onclick="reveal('4')">4</span>
-  <span class="word" onclick="reveal('5')">5</span>
-  <span class="word" onclick="reveal('6')">6</span>
-</div>
+<header>
+  <h1>LET'S GET CREATIVE</h1>
 
-<div id="1" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
+  <div class="controls">
 
-<div id="2" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
+    <div class="group">
+      <label>Color</label>
+      <input type="color" id="color" value="#ffffff">
+    </div>
 
-<div id="3" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
-  
- <div id="4" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
-  
-<div id="5" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
+    <div class="group">
+      <label>Brush</label>
+      <input type="range" id="size" min="1" max="40" value="6">
+      <span id="sizeValue">6px</span>
+    </div>
 
-<div id="6" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
-  
+    <div class="group">
+      <label>Text size</label>
+      <input type="range" id="fontSize" min="10" max="60" value="22">
+    </div>
+
+    <button class="secondary" id="textModeBtn">Text</button>
+    <button class="secondary" id="clearBtn">Clear</button>
+    <button id="saveBtn">Download</button>
+
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <canvas id="c"></canvas>
+
+    <!-- Floating text box -->
+    <div id="textInputBox">
+      <textarea id="textInput"></textarea>
+      <button id="addTextBtn">Add Text</button>
+    </div>
+
+  </div>
+</main>
+
 <script>
-  function reveal(id) {
-    const section = document.getElementById(id);
-    section.classList.toggle('hidden');
+(function(){
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+
+  const colorInput = document.getElementById('color');
+  const sizeInput = document.getElementById('size');
+  const sizeValue = document.getElementById('sizeValue');
+  const clearBtn = document.getElementById('clearBtn');
+  const saveBtn = document.getElementById('saveBtn');
+
+  const textBtn = document.getElementById('textModeBtn');
+  const textBox = document.getElementById('textInputBox');
+  const textInput = document.getElementById('textInput');
+  const addTextBtn = document.getElementById('addTextBtn');
+  const fontSizeInput = document.getElementById('fontSize');
+
+  let drawing=false;
+  let brushColor=colorInput.value;
+  let brushSize=parseInt(sizeInput.value,10);
+  let textMode=false;
+  let lastX=0,lastY=0;
+  let textPos={x:0,y:0};
+
+  function resize(){
+    const r=canvas.parentElement.getBoundingClientRect();
+    const dpr=window.devicePixelRatio||1;
+    canvas.width=r.width*dpr;
+    canvas.height=r.height*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.fillStyle="#000";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
   }
+
+  // Brush
+  sizeInput.oninput=()=>{
+    brushSize=parseInt(sizeInput.value,10);
+    sizeValue.textContent=brushSize+"px";
+  };
+  colorInput.oninput=()=>brushColor=colorInput.value;
+
+  function pos(e){
+    const rect=canvas.getBoundingClientRect();
+    let x,y;
+    if(e.touches){x=e.touches[0].clientX;y=e.touches[0].clientY;}
+    else{x=e.clientX;y=e.clientY;}
+    return {x:x-rect.left,y:y-rect.top};
+  }
+
+  function start(e){
+    if(textMode) return; // no brush when text mode
+    drawing=true;
+    const p=pos(e);
+    lastX=p.x;lastY=p.y;
+  }
+  function draw(e){
+    if(!drawing||textMode) return;
+    const p=pos(e);
+    ctx.strokeStyle=brushColor;
+    ctx.lineWidth=brushSize;
+    ctx.lineCap='round';
+    ctx.lineJoin='round';
+    ctx.beginPath();
+    ctx.moveTo(lastX,lastY);
+    ctx.lineTo(p.x,p.y);
+    ctx.stroke();
+    lastX=p.x;lastY=p.y;
+  }
+  function stop(){drawing=false;}
+
+  // Text mode toggle
+  textBtn.onclick=()=>{
+    textMode=!textMode;
+    textBtn.style.borderColor=textMode? "var(--accent)" : "var(--border)";
+    textBox.style.display="none"; // hide box if toggling off
+  };
+
+  // Place text input box on canvas click
+  canvas.addEventListener('pointerdown',(e)=>{
+    if(!textMode) return;
+    const p=pos(e);
+    textPos={x:p.x,y:p.y};
+    textBox.style.left=p.x+"px";
+    textBox.style.top=p.y+"px";
+    textBox.style.display="block";
+    textInput.focus();
+  });
+
+  // Add text to canvas
+  addTextBtn.onclick=()=>{
+    const text=textInput.value.trim();
+    if(text){
+      ctx.fillStyle=colorInput.value;
+      ctx.font=fontSizeInput.value+"px system-ui";
+      const lines=text.split("\n");
+      lines.forEach((line,i)=>{
+        ctx.fillText(line,textPos.x,textPos.y+i*(parseInt(fontSizeInput.value,10)+4));
+      });
+    }
+    textInput.value="";
+    textBox.style.display="none";
+  };
+
+  // Clear + save
+  clearBtn.onclick=()=>{
+    ctx.fillStyle="#000";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+  };
+  saveBtn.onclick=()=>{
+    const link=document.createElement('a');
+    link.download='drawing.png';
+    link.href=canvas.toDataURL();
+    link.click();
+  };
+
+  // Canvas events
+  canvas.addEventListener('pointerdown',start);
+  canvas.addEventListener('pointermove',draw);
+  canvas.addEventListener('pointerup',stop);
+  canvas.addEventListener('pointerleave',stop);
+
+  window.addEventListener('resize',resize);
+  resize();
+})();
 </script>
 
 </body>
