@@ -1,94 +1,279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questionable</title>
+  <meta charset="utf-8">
+  <title>Favourite Painters</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050508;
+      --panel: #111119;
+      --accent: #f0c47a;
+      --text: #f4f4f4;
+      --muted: #9a9aa5;
+      --border: #262633;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: monospace;
-      padding: 20px;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #161623 0, #050508 55%);
+      color: var(--text);
     }
-    .word {
-      cursor: pointer;
-      text-decoration: underline;
-      margin-right: 10px;
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
     }
-    .hidden {
-      display: none;
+
+    header {
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
-    .link {
+
+    header h1 {
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .artist-section {
+      margin-top: 32px;
+      padding: 16px 16px 20px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(17,17,25,0.98), rgba(10,10,16,0.98));
+      box-shadow: 0 0 22px rgba(0,0,0,0.9);
+    }
+
+    .artist-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 16px;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .artist-header h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .artist-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .artist-note {
+      margin: 4px 0 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+
+    .painting-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: #050507;
+    }
+
+    .painting-card img {
       display: block;
-      margin-left: 20px;
-      margin-top: 5px;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.25s ease-out, filter 0.25s ease-out;
+    }
+
+    .painting-card:hover img {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+    }
+
+    .painting-info {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 7px 10px;
+      background: linear-gradient(to top, rgba(0,0,0,0.78), transparent);
+      color: #f7f7f7;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .painting-title {
+      font-weight: 600;
+    }
+
+    .painting-meta {
+      font-size: 11px;
+      opacity: 0.85;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 22px; }
+      .artist-section { padding: 12px; }
+      .painting-card img { height: 190px; }
     }
   </style>
 </head>
 <body>
 
-<h2>Choose the type:</h2>
-  <p>This page was set up 9/07/2025.
-<div>
-  <span class="word" onclick="reveal('1')">1</span>
-  <span class="word" onclick="reveal('2')">2</span>
-  <span class="word" onclick="reveal('3')">3</span>
-  <span class="word" onclick="reveal('4')">4</span>
-  <span class="word" onclick="reveal('5')">5</span>
-  <span class="word" onclick="reveal('6')">6</span>
-</div>
+<main>
+  <header>
+    <h1>ARTIST "FAN PAGE"</h1>
+    <p></p>
+  </header>
 
-<div id="1" class="hidden">
-  <span class="word" onclick="window.open('https://www.earthcam.com/')">Earthcam</span>
-  <span class="word" onclick="window.open('http://www.insecam.org/en/byrating/')">Insecam</span>
-  <span class="word" onclick="window.open('https://www.flightradar24.com/')">Flight Radar 24</span>
-</div>
+  <!-- ==== Artist ==== -->
+  <section class="artist-section">
+    <div class="artist-header">
+      <h2>Zdzisław Beksiński</h2>
+      <div class="artist-meta">Country · Poland</div>
+    </div>
+    <p class="artist-note">
+      Beksiński's wife Zofia died, a year later his son commit suicide. A few years following this he was stabbed to death by a rouge teenager. I saw his artwork on a trip to Poland and it is scarred into my memory.
+    </p>
 
-<div id="2" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
+    <div class="grid">
+      
+      <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+ <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
+       <!-- Card 1 -->
+      <figure class="painting-card">
+        <img src="https://example.com/path/to/painting1.jpg"
+             alt="Painting title 1 by Painter Name 1">
+        <figcaption class="painting-info">
+          <span class="painting-title">Painting Title 1</span>
+          <span class="painting-meta">Year · Medium</span>
+        </figcaption>
+      </figure>
+      
 
-<div id="3" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
-  
- <div id="4" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('link')">3</span>
-  <span class="word" onclick="window.open('link')">4</span>
-  <span class="word" onclick="window.open('link')">5</span>
-</div>
-  
-<div id="5" class="hidden">
-  <span class="word" onclick="window.open('https://www.16personalities.com/free-personality-test')">Myer Briggs</span>
-  <span class="word" onclick="window.open('https://www.attachmentproject.com/attachment-style-quiz/')">Attachment Style</span>
-  <span class="word" onclick="window.open('https://aphantasia.com/study/vviq/')">Aphantasia x Hyperphantasia Scale</span>
-</div>
+      <!-- Add more <figure> blocks here for this painter -->
+    </div>
+  </section>
 
-<div id="6" class="hidden">
-  <span class="word" onclick="window.open('link')">1</span>
-  <span class="word" onclick="window.open('link')">2</span>
-  <span class="word" onclick="window.open('https://rationalwiki.org/wiki/Female_hysteria')">Female Hysteria</span>
-  <span class="word" onclick="window.open('https://en.wikipedia.org/wiki/Drapetomania')">Drapetomania</span>
-  <span class="word" onclick="window.open('https://montalk.net/matrix/157/spiritless-humans')">NPC Theory</span>
-</div>
-  
-<script>
-  function reveal(id) {
-    const section = document.getElementById(id);
-    section.classList.toggle('hidden');
-  }
-</script>
+ 
+      <!-- etc -->
+    </div>
+  </section>
+
+  <!-- Copy/paste more <section class="artist-section"> blocks for more painters -->
+
+</main>
 
 </body>
 </html>
