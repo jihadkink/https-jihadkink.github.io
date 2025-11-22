@@ -22,7 +22,8 @@
   }
 
   #gifImg {
-    object-fit: cover;
+    object-fit: contain;   /* show entire GIF */
+    background: #000;      /* black bars if aspect ratio differs */
     cursor: pointer;
   }
 </style>
@@ -35,7 +36,6 @@
 </div>
 
 <script>
-  // LIST OF GIFS – CLEANED + VALID JS
   const frames = [
     { img: "https://media1.tenor.com/m/w0cSSjxkAwgAAAAd/mundo-feliz-onetreehsll.gif" },
     { img: "https://media1.tenor.com/m/hPtAvzKVMI8AAAAd/society-historyoftheentireworld.gif" },
@@ -64,19 +64,14 @@
     { img: "https://media1.tenor.com/m/5sOCJ1ZTQ58AAAAd/brain-overload.gif" },
     { img: "https://media1.tenor.com/m/wDJ5yHPeen8AAAAd/imperial-japanese-march.gif" },
     { img: "https://media1.tenor.com/m/17JHIWVYGyoAAAAd/pollution-water.gif" },
-    { img: "https://media1.tenor.com/m/_NTXHH5AIzAAAAAd/ww2-croatia.gif" }
-    { img: "https://i.makeagif.com/media/9-16-2015/PJ-6A0.gif" }
-   { img: "https://assets.kyivindependent.com/content/images/2025/07/cut_GettyImages-1744427593_3.gif" }
-   { img: "https://newscenter.lbl.gov/wp-content/uploads/2021/04/ezgif.com-gif-maker.gif" }
-   { img: "https://soranews24.com/wp-content/uploads/sites/3/2015/08/hiroshima.gif" }
-
-    // You can keep adding more:
-    // { img: "GIF_URL_HERE" },
-    // { img: "GIF_URL_HERE" }
+    { img: "https://media1.tenor.com/m/_NTXHH5AIzAAAAAd/ww2-croatia.gif" },
+    { img: "https://i.makeagif.com/media/9-16-2015/PJ-6A0.gif" },
+    { img: "https://assets.kyivindependent.com/content/images/2025/07/cut_GettyImages-1744427593_3.gif" },
+    { img: "https://newscenter.lbl.gov/wp-content/uploads/2021/04/ezgif.com-gif-maker.gif" },
+    { img: "https://soranews24.com/wp-content/uploads/sites/3/2015/08/hiroshima.gif" }
   ];
 
   let index = 0;
-
   const gifImg = document.getElementById("gifImg");
 
   function showFrame(i) {
@@ -85,7 +80,6 @@
 
   showFrame(index);
 
-  // Click anywhere: go to next frame
   document.body.addEventListener("click", () => {
     index++;
     if (index >= frames.length) index = 0;
