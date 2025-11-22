@@ -6,10 +6,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+  /* Fullscreen GIF overlay */
+  #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  #overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   body {
     margin: 0;
     background: #000;
-    overflow: hidden; /* stop scrollbars from appearing */
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -20,9 +40,10 @@
   /* Bouncing GIF */
   #cat {
     position: absolute;
-    width: 500px; /* adjust size if needed */
+    width: 500px;
     height: auto;
-    pointer-events: none; /* cat can't be clicked */
+    pointer-events: auto; /* clickable */
+    cursor: pointer;
   }
 
   /* Bottom box */
@@ -99,22 +120,31 @@
 <!-- Bouncing Cat -->
 <img id="cat" src="https://media1.tenor.com/m/42nC5IFjCB4AAAAd/black-and-green-rolling-cat.gif" alt="cat">
 
-<!-- Bottom box with glitch text -->
+<!-- Fullscreen GIF overlay -->
+<div id="overlay">
+  <img src="https://media1.tenor.com/m/HaZRPGiAP24AAAAd/ghost.gif" alt="overlay">
+</div>
+
+<!-- Bottom box -->
 <div class="bottom-box">
   <span class="glitch" data-text="DEAD END">DEAD END</span>
 </div>
 
 <script>
   const cat = document.getElementById("cat");
+  const overlay = document.getElementById("overlay");
 
-  let x = 100;       // starting x
-  let y = 100;       // starting y
-  let dx = 3.5;      // speed horizontally
-  let dy = 2.5;      // speed vertically
+  let x = 100;
+  let y = 100;
+  let dx = 3.5;
+  let dy = 2.5;
+  let running = true;
 
   function animate() {
+    if (!running) return;
+
     const vw = window.innerWidth;
-    const vh = window.innerHeight - 120; // account for bottom box height
+    const vh = window.innerHeight - 120;
 
     x += dx;
     y += dy;
@@ -129,8 +159,13 @@
   }
 
   animate();
+
+  // CLICK → stop animation + show GIF
+  cat.addEventListener("click", () => {
+    running = false;
+    overlay.style.display = "flex";
+  });
 </script>
 
 </body>
 </html>
-
