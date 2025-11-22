@@ -1,1 +1,110 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GIF Loop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  a, img {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+
+<a id="gifLink" href="#" target="_blank">
+  <img id="gifImg" src="">
+</a>
+
+<script>
+/* ==========================================
+   PUT AS MANY GIFS AS YOU WANT HERE
+   ========================================== */
+const frames = [
+{ img: https://media1.tenor.com/m/w0cSSjxkAwgAAAAd/mundo-feliz-onetreehsll.gif"", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/hPtAvzKVMI8AAAAd/society-historyoftheentireworld.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/EQr2bVe_QIEAAAAd/girl-hypnotic.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/93MMoJX-SqkAAAAd/buy-obey.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/y0Vs9jT06QkAAAAd/they-live-movie-quotes.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/DSRVQEjrwToAAAAd/charlotte-caniggia-barbie-girl.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/0xZmvZ49jg4AAAAd/plastic-ocean.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/CO6-2oZNrjQAAAAd/water-trash.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/kuG1cO7Py78AAAAd/plastic-pollution-arg.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/TlOO2MoqE8IAAAAd/neuron-brain.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/bOW4yIVNktUAAAAd/buy-now.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/U02eLOMwew0AAAAd/pollution.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/9no8DztTDxsAAAAd/lineplay-plastic-surgery.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/BSq7w6bJKUcAAAAd/madonna-kiss.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/r5RXrgRzq60AAAAd/croatia-ww2.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/dwMxkrSJdsUAAAAd/big-brother-camera-cctv.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/WVPNXedSf_YAAAAd/im-an-influencer-kim-kardashian.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/E6Naa0joo6sAAAAd/they-live1988-skeleton.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/7w6_bpJP4sYAAAAd/cost-of-living-buy-food.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/Wi97MT5ZHMQAAAAd/germany-ww2.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/lwOTfBEtjs4AAAAd/whe-a-lie-is-repeated-more-than100times-it-becomes-news-news.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/5plUl9gTyggAAAAd/radar-atc.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/0zehXL4qOCEAAAAd/bill-wurtz.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/Myg8zgtj0iAAAAAd/heyhandsome-letmedrivetheboat.gif "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/5sOCJ1ZTQ58AAAAd/brain-overload.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/wDJ5yHPeen8AAAAd/imperial-japanese-march.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/17JHIWVYGyoAAAAd/pollution-water.gif", link: "LINK_HERE" },
+{ img: "https://media1.tenor.com/m/_NTXHH5AIzAAAAAd/ww2-croatia.gif", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+{ img: "GIF_URL_HERE", link: "LINK_HERE" },
+  /* KEEP ADDING DOWNWARD
+     COPY/PASTE THIS LINE:
+     { img: "GIF_URL", link: "LINK" },
+  */
+  { img: "GIF_URL_LAST", link: "LINK_LAST" }
+];
+
+/* ========================================== */
+
+let index = 0;
+
+const gifImg = document.getElementById("gifImg");
+const gifLink = document.getElementById("gifLink");
+
+function showFrame(i) {
+  gifImg.src = frames[i].img;
+  gifLink.href = frames[i].link;
+}
+
+showFrame(index);
+
+document.body.addEventListener("click", () => {
+  index++;
+  if (index >= frames.length) index = 0;
+  showFrame(index);
+});
+</script>
+
+</body>
+</html>
