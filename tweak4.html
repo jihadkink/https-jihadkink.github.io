@@ -1,91 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Criminology</title>
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: monospace;
-      padding: 20px;
-    }
-    .word {
-      cursor: pointer;
-      text-decoration: underline;
-      margin-right: 10px;
-    }
-    .hidden {
-      display: none;
-    }
-    .link {
-      display: block;
-      margin-left: 20px;
-      margin-top: 5px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>EVOLUTION</title>
+
+<style>
+/* ---- EARTHY PAGE STYLE ---- */
+body {
+  background-color: #4B3F32; /* deep brown */
+  font-family: sans-serif;
+  margin: 0;
+  padding: 40px;
+  color: #DCD7C9;
+}
+
+h1 {
+  text-align: center;
+  color: #DCD7C9;
+  margin-bottom: 30px;
+}
+
+.content {
+  background-color: #D5A85E; /* amber */
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  color: #2A2A24; /* text inside box (dark) */
+}
+
+/* ---- TABLE STYLE (your screenshot style) ---- */
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.simple-table th,
+.simple-table td {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  vertical-align: top;
+}
+
+.simple-table th {
+  background-color: #E8D5A8;
+  font-weight: bold;
+}
+
+/* optional section titles */
+.section-title {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* editable area */
+.editable {
+  outline: none;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Choose the type:</h2>
-  <p>This page is criminology based, set up 29/06/2025.
-<div>
-  <span class="word" onclick="reveal('Books')">Books</span>
-  <span class="word" onclick="reveal('Sites')">Sites</span>
-  <span class="word" onclick="reveal('SORs')">SORs</span>
-  <span class="word" onclick="reveal('Controversy')">Controversy</span>
-  <span class="word" onclick="reveal('Missing Persons')">Missing Persons</span>
-  <span class="word" onclick="reveal('Lists')">Lists</span>
+<h1>EVOLUTION</h1>
+
+<div class="content">
+  <!-- EVERYTHING YOU WANT GOES IN HERE -->
+  <div class="editable" contenteditable="true">
+
+    <!-- Example placeholder -->
+    <p>When evolutionary milestones sort of happened.
+    
+    <div class="table-block">
+  <div class="table-title">HOMO SPECIES</div>
+  <table class="simple-table">
+    <tr>
+      <th>APPEARED</th>
+      <th>SAPIEN</th>
+      <th>NEANDER</th>
+      <th>DENISOVEN</th>
+      <th>ERECTUS</th>
+    </tr>
+    <tr>
+      <th>FIRST</th>
+      <td>300K AGO</td>
+      <td>4–30K AGO</td>
+      <td>500K AGO</td>
+      <td>2MIL AGO</td>
+    </tr>
+    <tr>
+      <th>LAST</th>
+      <td>NOW</td>
+      <td>40K AGO</td>
+      <td>25K AGO</td>
+      <td>108K AGO</td>
+    </tr>
+  </table>
 </div>
 
-<div id="Books" class="hidden">
-  <span class="word" onclick="window.open('https://ia801407.us.archive.org/6/items/LundyWhyDoesHeDoThat/Lundy_Why-does-he-do-that.pdf')">DV</span>
-  <span class="word" onclick="window.open('link of https')">Example</span>
+    <div class="table-block">
+  <div class="table-title">HOMO SAPIEN</div>
+  <table class="simple-table">
+    <tr>
+      <th>CONTINENT</th>
+      <th>WHERE</th>
+      <th>WHEN</th>
+      <th>NAME</th>
+    </tr>
+    <tr>
+      <td>AUS</td>
+      <td>AUS</td>
+      <td>40K AGO</td>
+      <td>MUNGO LADY</td>
+    </tr>
+    <tr>
+      <td>AMERICA</td>
+      <td>USA</td>
+      <td>13K AGO</td>
+      <td>ARLINGTON</td>
+    </tr>
+    <tr>
+      <td>EUR</td>
+      <td>GREECE</td>
+      <td>210K AGO</td>
+      <td>APIDIMA</td>
+    </tr>
+    <tr>
+      <td>AFRICA</td>
+      <td>ETHIOPIA</td>
+      <td>230K AGO</td>
+      <td>OMO 1</td>
+    </tr>
+    <tr>
+      <td>MIDDLE EAST</td>
+      <td>SAUDI ARABIA</td>
+      <td>85K AGO</td>
+      <td>UNKNOWN</td>
+    </tr>
+    <tr>
+      <td>MISC REGION</td>
+      <td>MOROCCO</td>
+      <td>315K AGO</td>
+      <td>UNKNOWN</td>
+    </tr>
+  </table>
 </div>
 
-<div id="Sites" class="hidden">
-  <span class="word" onclick="window.open('https://osintframework.com/')">OSINT</span>
-  <span class="word" onclick="window.open('https://innocenceproject.org/all-cases/')">Innocence Project</span>
+    
+    <div class="table-block">
+  <div class="table-title">LAST MIXTURE</div>
+  <table class="simple-table">
+    <tr>
+      <th>MIXTURE</th>
+      <th>NEANDERTHAL</th>
+      <th>DENISOVEN</th>
+      <th>ERECTUS</th>
+    </tr>
+    <tr>
+      <th>BETWEEN</th>
+      <td>60–40K AGO</td>
+      <td>54–44K AGO</td>
+      <td>UNKNOWN</td>
+    </tr>
+  </table>
 </div>
 
-<div id="SORs" class="hidden">
-  <span class="word" onclick="window.open('https://offenders.org.uk/')">UK</span>
-  <span class="word" onclick="window.open('https://www.nsopw.gov/?AspxAutoDetectCookieSupport=1')">America</span>
-  <span class="word" onclick="window.open('https://rps.ms.gov.pl/en-US/Public#/home')">Poland</span>
-  <span class="word" onclick="window.open('https://www.wa.gov.au/service/security/law-enforcement/access-registered-sex-offender-information')">Australia's Failure</span>
-</div>
-  
- <div id="Controversy" class="hidden">
-  <span class="word" onclick="window.open('https://www.bbc.com/news/world-us-canada-59688787')">Loftus x Ghislaine</span>
-  <span class="word" onclick="window.open('https://www.theguardian.com/science/2017/sep/23/inside-case-of-repressed-memory-nicole-kluemper')">Loftus x Klumper</span>
-  <span class="word" onclick="window.open('https://www.theguardian.com/film/2020/feb/07/harvey-weinstein-trial-unreliable-memories-elizabeth-loftus')">Loftus x Weinstein</span>
-</div>
-  
-<div id="Missing Persons" class="hidden">
-  <span class="word" onclick="window.open('https://www.doenetwork.org/mp-geo-euro-males.php')">Global</span>
-  <span class="word" onclick="window.open('https://canadasmissing.ca/index-eng.htm')">Canada</span>
-  <span class="word" onclick="window.open('https://www.missingpersons.gov.au/search-missing-persons')">Australia</span>
-  <span class="word" onclick="window.open('https://www.missingpeople.org.uk/appeal-search')">UK</span>
-  <span class="word" onclick="window.open('https://www.fbi.gov/wanted/kidnap')">America</span>
+    <div class="table-block">
+  <div class="table-title">SUMMARY</div>
+  <ul>
+    <li>First person 315k</li>
+    <li>Last erectus 108k</li>
+    <li>Last Neanderthal 40k</li>
+    <li>Last Denisovan 25k</li>
+    <li>Last mixture 40k</li>
+    <li>Starting human history at 25k ago</li>
+    <li>Most different genes for all racial colours exist already</li>
+  </ul>
 </div>
 
-<div id="Lists" class="hidden">
-  <span class="word" onclick="window.open('https://www.fbi.gov/wanted/dt')">FBI Domestic Terrorism</span>
-  <span class="word" onclick="window.open('https://www.preachersofhate.com/')">Preachers of Hate</span>
-  <span class="word" onclick="window.open('https://www.police.nsw.gov.au/can_you_help_us/wanted')">Australia Most Wanted</span>
-  <span class="word" onclick="window.open('https://www.boloprogram.org/')">Canada Bolo Program</span>
-  <span class="word" onclick="window.open('https://bc-cb.rcmp-grc.gc.ca/ViewPage.action?siteNodeId=1035&languageId=1&contentId=-1')">Canada</span>
-  <span class="word" onclick="window.open('https://eumostwanted.eu/')">Europe</span>
-  <span class="word" onclick="window.open('https://www.nationalcrimeagency.gov.uk/most-wanted')">UK</span>
+<div class="table-block">
+  <div class="table-title">HAPLOGROUPS</div>
+  <ul>
+    <li>Haplogroup L: East Africa, oldest haplo of sapiens, 230k</li>
+    <li>Haplogroup N: Europe, 80k</li>
+    <li>Haplogroup D: Africa, 73k</li>
+    <li>Haplogroup C: Asia, 70k</li>
+    <li>Haplogroup J: North Africa &amp; Middle East, 60k</li>
+    <li>Haplogroup HV: Europe/Syria/Middle East, 20k</li>
+    <li>Haplogroup K (subgroup of U8): Anatolia, 16k</li>
+  </ul>
 </div>
-  
-<script>
-  function reveal(id) {
-    const section = document.getElementById(id);
-    section.classList.toggle('hidden');
-  }
-</script>
+
+    <div class="table-block">
+  <div class="table-title">HUMAN HISTORY</div>
+  <table class="simple-table timeline">
+    <thead>
+      <tr>
+        <th>WHEN</th>
+        <th>YEAR</th>
+        <th>TAB</th>
+        <th>GENETIC ALTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>25K AGO</td>
+        <td>25k</td>
+        <td>
+          Already wear clothing, already bury our dead, German’s already making flutes,
+          Aboriginal’s already doing cremation of their dead, already had language and did cave
+          paintings, all different blood types exist
+        </td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>24K AGO</td>
+        <td>24k</td>
+        <td>
+          Kebaran culture in Palestine, hunter-gatherers, made tools and harvested grains
+        </td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>20–17K AGO</td>
+        <td>20–17k</td>
+        <td>
+          Pottery was being made in Southern Chinese caves
+        </td>
+        <td>
+          17k – blond hair appears in Siberia
+        </td>
+      </tr>
+
+
+      <tr>
+        <td>11K AGO</td>
+        <td>11.5k</td>
+        <td>Turkey has built the first place of worship at Göbekli Tepe</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>10K AGO</td>
+        <td>10k</td>
+        <td>
+          Mesopotamia, Middle East, starts just creating stuff left, right and centre.  
+          Syria had its own civilization and agriculture and even travelling to send a message to Egypt.
+        </td>
+        <td>10–6k – blue eyes came about in Northern Europe</td>
+      </tr>
+
+      <!-- ... many more rows ... -->
+
+      <tr>
+        <td>2K AGO</td>
+        <td>2K ish</td>
+        <td>“Jesus" roamed the Middle East</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>1k AGO</td>
+        <td>1222ish years ago</td>
+        <td>“First” King of England/Wessex/Saxons</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    
+    </p>
+
+  </div>
+</div>
 
 </body>
 </html>
