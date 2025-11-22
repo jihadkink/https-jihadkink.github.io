@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bouncing Cat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    overflow: hidden; /* stop scrollbars from appearing */
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    font-family: sans-serif;
+    color: white;
+  }
+
+  /* Bouncing GIF */
+  #cat {
+    position: absolute;
+    width: 500px; /* adjust size if needed */
+    height: auto;
+    pointer-events: none; /* cat can't be clicked */
+  }
+
+  /* Bottom box */
+  .bottom-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(0,0,0,0.85);
+    border-top: 2px solid #00ff3c;
+    color: #00ff3c;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    overflow: hidden;
+  }
+
+  /* Glitch effect */
+  .glitch {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #00ff3c;
+    pointer-events: none;
+  }
+
+  .glitch::before {
+    left: 1px;
+    text-shadow: -2px 0 #003300;
+    animation: glitch-1 2.5s infinite linear alternate-reverse;
+  }
+
+  .glitch::after {
+    left: -1px;
+    text-shadow: -2px 0 #00ff99;
+    animation: glitch-2 3s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-1 {
+    0%   { clip-path: inset(0 0 40% 0); }
+    20%  { clip-path: inset(20% 0 20% 0); }
+    40%  { clip-path: inset(40% 0 0 0); }
+    60%  { clip-path: inset(10% 0 30% 0); }
+    80%  { clip-path: inset(30% 0 10% 0); }
+    100% { clip-path: inset(5% 0 25% 0); }
+  }
+
+  @keyframes glitch-2 {
+    0%   { clip-path: inset(10% 0 25% 0); }
+    20%  { clip-path: inset(0 0 30% 0); }
+    40%  { clip-path: inset(30% 0 0 0); }
+    60%  { clip-path: inset(40% 0 20% 0); }
+    80%  { clip-path: inset(25% 0 5% 0); }
+    100% { clip-path: inset(15% 0 15% 0); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Bouncing Cat -->
+<img id="cat" src="https://media1.tenor.com/m/42nC5IFjCB4AAAAd/black-and-green-rolling-cat.gif" alt="cat">
+
+<!-- Bottom box with glitch text -->
+<div class="bottom-box">
+  <span class="glitch" data-text="DEAD END">DEAD END</span>
+</div>
+
+<script>
+  const cat = document.getElementById("cat");
+
+  let x = 100;       // starting x
+  let y = 100;       // starting y
+  let dx = 3.5;      // speed horizontally
+  let dy = 2.5;      // speed vertically
+
+  function animate() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight - 120; // account for bottom box height
+
+    x += dx;
+    y += dy;
+
+    if (x <= 0 || x + cat.width >= vw) dx = -dx;
+    if (y <= 0 || y + cat.height >= vh) dy = -dy;
+
+    cat.style.left = x + "px";
+    cat.style.top = y + "px";
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+</body>
+</html>
 
