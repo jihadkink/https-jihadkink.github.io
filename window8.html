@@ -1,1 +1,362 @@
+<body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Girly Tunnel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
+<style>
+  :root {
+    --bg: #000000;
+    --neon:  #AA336A;
+    --neon-soft: rgba(0, 255, 60, 0.25); 
+    --text-main:  #AA336A;
+    --text-muted: #AA336A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg) url("https://media1.tenor.com/m/Yiup1SnUZsUAAAAd/abyss-black-hole.gif") center/cover fixed;
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .overlay {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.4), rgba(0,0,0,0.9));
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 10px;
+  }
+
+  .frame {
+    width: 100%;
+    max-width: 980px;
+    border-radius: 16px;
+    border: 2px solid var(--neon);
+    box-shadow:
+      0 0 18px var(--neon-soft),
+      0 0 60px rgba(0, 255, 60, 0.4),
+      inset 0 0 12px rgba(0, 0, 0, 0.8);
+    background: rgba(0,0,0,0.75);
+    padding: 18px;
+    display: grid;
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  /* Left column – avatar + basic info */
+  .profile {
+    border: 1px solid var(--neon);
+    border-radius: 12px;
+    padding: 12px;
+    background: radial-gradient(circle at top, rgba(0,255,60,0.12), rgba(0,0,0,0.9));
+  }
+
+  .avatar-box {
+    border: 1px solid var(--neon);
+    border-radius: 10px;
+    padding: 6px;
+    margin-bottom: 12px;
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+  }
+
+  .avatar-box img {
+    display: block;
+    width: 100%;
+    max-width: 210px;
+    margin: 0 auto;
+  }
+
+  .profile-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .profile-note {
+    font-size: 12px;
+    color: var(--text-main);
+    text-align: center;
+  }
+
+  /* Right column – links + playlist */
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .link-card {
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid var(--neon);
+    padding: 6px 6px 8px;
+    background: rgba(0,0,0,0.85);
+    text-decoration: none;
+    color: var(--text-main);
+    box-shadow: 0 0 12px rgba(0,255,60,0.2);
+    overflow: hidden;
+  }
+
+  .link-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,255,60,0.12), transparent 40%, transparent 60%, rgba(0,255,60,0.12));
+    opacity: 0;
+    transition: opacity 0.18s ease-out;
+    pointer-events: none;
+  }
+
+  .link-card:hover::before {
+    opacity: 1;
+  }
+
+  .link-card img {
+    display: block;
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+
+  .link-label {
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .link-sub {
+    font-size: 11px;
+    text-align: center;
+    color: var(--text-main);
+    opacity: 0.8;
+  }
+
+  /* Playlist block */
+  .player-box {
+    border-radius: 10px;
+    border: 1px solid var(--neon);
+    background: rgba(0,0,0,0.9);
+    padding: 8px;
+  }
+
+  .player-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+  }
+
+  @media (max-width: 720px) {
+    .frame {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <div class="frame">
+
+    <!-- LEFT COLUMN: avatar / main image -->
+    <aside class="profile">
+      <div class="profile-title"> RUEMINATION</div>
+      <div class="avatar-box">
+        <img src="https://media1.tenor.com/m/Ge_8FOGpl5oAAAAd/ugly.gif" alt="Avatar">
+      </div>
+      <p class="profile-note">
+      </p> This is a place for the next level of the tunnel. Set up 24/11/2025. You can enjoy your exploration. And I can enjoy archiving all that I desire.
+    </aside>
+
+    <!-- RIGHT COLUMN: link cards + playlist -->
+    <section class="right">
+
+      <!-- LINKS -->
+      <div class="link-grid">
+
+        <!-- Link 1 -->
+        <a class="link-card" href="window1.html" target="_blank">
+          <img src="https://media1.tenor.com/m/8RAfS5HMCFIAAAAd/lightning-bug.gif" alt="LVL 6">
+          <div class="window1.html">LVL 14</div>
+        </a>
+
+        <!-- Link 2 -->
+        <a class="link-card" href="window2.html" target="_blank">
+          <img src="https://media1.tenor.com/m/Ej_V_CMhLIUAAAAd/jumping-snow.gif" alt="LVL 7">
+          <div class="window2.html">LVL 15</div>
+        </a>
+
+        <!-- Link 3 -->
+        <a class="link-card" href="window3.html" target="_blank">
+          <img src="https://media1.tenor.com/m/hToYgkrTl8UAAAAd/okcool-la.gif" alt="LVL 8">
+          <div class="window3.html">LVL 16</div>
+        </a>
+        
+        <!-- Link 3 -->
+        <a class="link-card" href="window4.html" target="_blank">
+          <img src="https://media1.tenor.com/m/C_XDoNdNo6YAAAAd/pixel-art-snow.gif" alt="LVL 9">
+          <div class="window4.html">LVL 17</div>
+        </a>
+        
+        <!-- Link 3 -->
+        <a class="link-card" href="window5.html" target="_blank">
+          <img src="https://media1.tenor.com/m/CtT8v0ni5-EAAAAd/butterflies-glitters.gif" alt="LVL 10">
+          <div class="window5.html">LVL 18</div>
+        </a>
+        
+        <!-- Link 3 -->
+        <a class="link-card" href="window6.html" target="_blank">
+          <img src="https://media1.tenor.com/m/D7IOEMuet10AAAAd/isometric-twinkle.gif" alt="LVL 11">
+          <div class="window6.html">LVL 19</div>
+        </a>
+        
+        <!-- Link -->
+        <a class="link-card" href="window7.html" target="_blank">
+          <img src="https://media1.tenor.com/m/NOkUZFnygO8AAAAd/zaunvi-caitvitwt.gif" alt="LVL 12">
+          <div class="window7.html">LVL 20</div>
+        </a>
+        
+        <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/RG2U2twho30AAAAd/pink-flowers.gif" alt="LVL 21">
+          <div class="window8.html">LVL 21</div>
+        </a>
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/e5G7rz88b4AAAAAd/lofi-rain.gif" alt="LVL 13">
+          <div class="window8.html">LVL 22</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/QxOA81a-zL4AAAAd/the-dark-crystal-intro.gif" alt="LVL 13">
+          <div class="window8.html">LVL 23</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/iSisAG8bEeEAAAAd/snejana-snejana-onopka.gif" alt="LVL 13">
+          <div class="window8.html">LVL 24</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/xJFTMO19kZ4AAAAd/russia-ac.gif" alt="LVL 13">
+          <div class="window8.html">LVL 25</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/GbWZboH0uIsAAAAd/snejana-onopka-model.gif" alt="LVL 13">
+          <div class="window8.html">LVL 26</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/k_udQjap-GwAAAAd/winter-dark-winter.gif" alt="LVL 13">
+          <div class="window8.html">LVL 27</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/fmZ_RmFpvM8AAAAd/snow-snowy.gif" alt="LVL 13">
+          <div class="window8.html">LVL 28</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/F_xHgXfyvKYAAAAd/space-sparkle.gif" alt="LVL 13">
+          <div class="window8.html">LVL 29</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/Wjo2rdTw2yYAAAAd/white-girl-ic3peak.gif" alt="LVL 13">
+          <div class="window8.html">LVL 30</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/vxuO5CafcE4AAAAd/red-glitter.gif" alt="LVL 13">
+          <div class="window8.html">LVL 31</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/lLzj0_x8xcwAAAAd/spinning-funny.gif" alt="LVL 13">
+          <div class="window8.html">LVL 32</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+        
+                <!-- Link -->
+        <a class="link-card" href="window8.html" target="_blank">
+          <img src="https://media1.tenor.com/m/HPRObln20bcAAAAd/tokyo-city.gif" alt="LVL 13">
+          <div class="window8.html">LVL 33</div>
+        </a>
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+
+        <!-- Add more <a class="link-card"> blocks for more links -->
+
+      </div>
+
+</div>
+
+  
+
+  </div>
+</div>
+
+</body>
+</html>
