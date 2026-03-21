@@ -1,1 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Retro Cyber Collage</title>
+  <style>
+    :root {
+      --bg: #000;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Main stage */
+    #scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(40,40,70,.15), transparent 40%),
+        linear-gradient(180deg, #050505 0%, #000 100%);
+    }
+
+    /* Optional faint scanline overlay */
+    #scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.025) 0px,
+          rgba(255,255,255,0.025) 1px,
+          transparent 2px,
+          transparent 4px
+        );
+      mix-blend-mode: soft-light;
+      opacity: 0.35;
+      z-index: 9999;
+    }
+
+    .item {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      transform-origin: center center;
+      will-change: transform, opacity, filter;
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: auto;
+      border: none;
+    }
+
+    /* Frame option for “window / button / old UI” feel */
+    .framed {
+      border: 2px solid rgba(190, 190, 190, 0.8);
+      box-shadow:
+        0 0 0 1px rgba(30,30,30,0.8) inset,
+        0 0 12px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* Neon/lightning decorative layer example */
+    .electric {
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      filter: saturate(1.25) contrast(1.05);
+    }
+
+    /* Flicker handled by CSS vars */
+    .flicker {
+      animation-name: flickerAnim;
+      animation-timing-function: steps(1, end);
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes flickerAnim {
+      0%   { opacity: var(--base-opacity, 1); }
+      6%   { opacity: calc(var(--base-opacity, 1) * 0.12); }
+      8%   { opacity: var(--base-opacity, 1); }
+      14%  { opacity: calc(var(--base-opacity, 1) * 0.55); }
+      15%  { opacity: var(--base-opacity, 1); }
+      39%  { opacity: calc(var(--base-opacity, 1) * 0.18); }
+      40%  { opacity: var(--base-opacity, 1); }
+      71%  { opacity: calc(var(--base-opacity, 1) * 0.65); }
+      72%  { opacity: var(--base-opacity, 1); }
+      100% { opacity: var(--base-opacity, 1); }
+    }
+
+    /* Slight movement option */
+    .floaty {
+      animation: floatAnim 6s ease-in-out infinite;
+    }
+
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0px) rotate(var(--rotation, 0deg)); }
+      50%      { transform: translateY(-6px) rotate(var(--rotation, 0deg)); }
+    }
+
+    #bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.pinimg.com/474x/a2/73/e9/a273e9f2de354f365a059a56997f09c5.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.45;
+  filter: contrast(1.2) saturate(1.2) brightness(1.0);
+  z-index: 0;
+}
+    }
+
+    /* Tiny help panel so you remember what to edit */
+    .help {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 10000;
+      background: rgba(0,0,0,.72);
+      color: #d9d9d9;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.15);
+      font-size: 12px;
+      line-height: 1.45;
+      max-width: 360px;
+      pointer-events: none;
+    }
+
+    .help b {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="scene">
+    <div id="bg-image"></div>
+    <div class="help">
+      <b>Edit the IMAGES array in the script.</b><br>
+      Change: <b>src, x, y, w, h, z, opacity, rotate, flicker, framed</b><br>
+      Coordinates are in <b>%</b> of screen width/height.
+    </div>
+  </div>
+
+  <script>
+    /*
+      ============================================================
+      EDIT THIS SECTION
+      ============================================================
+
+      Each object is one image layer.
+
+      Properties:
+      - src: image URL
+      - x, y: top-left position in % of viewport
+      - w, h: size in % of viewport
+      - z: layer order (higher = in front)
+      - opacity: 0 to 1
+      - rotate: degrees
+      - flicker: true/false
+      - flickerSpeed: seconds (smaller = faster flicker)
+      - framed: adds old-window border
+      - electric: optional brighter blend effect
+      - floaty: slight moving animation
+    */
+
+    const BACKGROUND_IMAGE = ""; 
+    // Put a URL here if you want a faint full-page background image.
+
+    const IMAGES = [
+      {
+        src: "https://media1.tenor.com/m/JvzD-rG8OukAAAAd/webcore.gif",
+        x: 0,
+        y: 0,
+        w: 32,
+        h: 20,
+        z: 3,
+        opacity: 0.50,
+        rotate: 0,
+        flicker: false,
+        framed: false
+      },
+      {
+        src: "https://media1.tenor.com/m/2JadSPd49K0AAAAd/cyberpunk-hacker.gif",
+        x: 39,
+        y: 0,
+        w: 33,
+        h: 24,
+        z: 2,
+        opacity: 0.50,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 1.6,
+        framed: false
+      },
+      {
+        src: "https://media.tenor.com/v6f-UhQ8QZsAAAAj/winx-winx-club.gif",
+        x: 12,
+        y: 18,
+        w: 24,
+        h: 24,
+        z: 5,
+        opacity: 0.90,
+        rotate: 0,
+        flicker: false,
+        framed: true
+      },
+      {
+        src: "https://media1.tenor.com/m/53FLTkbWaGUAAAAC/blue-aesthetic.gif",
+        x: 47,
+        y: 16,
+        w: 23,
+        h: 23,
+        z: 5,
+        opacity: 0.90,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 0.5,
+        framed: true
+      },
+      {
+        src: "https://media.tenor.com/oYgY0td9TrUAAAAj/internet-webcore.gif",
+        x: 0,
+        y: 30,
+        w: 80,
+        h: 10,
+        z: 1,
+        opacity: 0.50,
+        rotate: 0,
+        flicker: false,
+        framed: false
+      },
+      {
+        src: "https://media1.tenor.com/m/30mYActm7V4AAAAd/cybercore.gif",
+        x: 78,
+        y: 29,
+        w: 20,
+        h: 20,
+        z: 7,
+        opacity: 0.50,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 0.7,
+        framed: false
+      },
+      {
+        src: "https://media.tenor.com/A1lBfhxhUpcAAAAj/glitter-girl.gif",
+        x: 2,
+        y: 40,
+        w: 18,
+        h: 22,
+        z: 4,
+        opacity: 0.88,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 1.1,
+        framed: false
+      },
+      {
+        src: "https://media1.tenor.com/m/q3hgYOjvJBUAAAAd/ee-emci.gif",
+        x: 28,
+        y: 44,
+        w: 24,
+        h: 22,
+        z: 6,
+        opacity: 0.80,
+        rotate: 0,
+        flicker: false,
+        framed: true
+      },
+      {
+        src: "https://media1.tenor.com/m/GW9bWLjwe70AAAAd/wickiever-stan-twitter.gif",
+        x: 56,
+        y: 47,
+        w: 18,
+        h: 18,
+        z: 6,
+        opacity: 0.84,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 1.5,
+        framed: true
+      },
+      {
+        src: "https://media.tenor.com/UMlgKil_H8kAAAAj/dont-lie-nokia.gif",
+        x: 36,
+        y: 57,
+        w: 20,
+        h: 22,
+        z: 5,
+        opacity: 0.60,
+        rotate: 0,
+        flicker: false,
+        framed: false
+      },
+      {
+        src: "https://media.tenor.com/V5bXCmh2GB0AAAAj/vaporeon-pokemon-vaporeon.gif",
+        x: 61,
+        y: 58,
+        w: 22,
+        h: 22,
+        z: 8,
+        opacity: 0.88,
+        rotate: 0,
+        flicker: false,
+        framed: true
+      },
+      {
+        src: "https://media1.tenor.com/m/kHNywGvkCDkAAAAd/heavenly-birthday-candle.gif",
+        x: 0,
+        y: 78,
+        w: 32,
+        h: 10,
+        z: 2,
+        opacity: 0.95,
+        rotate: 0,
+        flicker: false,
+        framed: false
+      },
+      {
+        src: "https://media1.tenor.com/m/-qUMahOOxLYAAAAd/aesthetic.gif",
+        x: 62,
+        y: 80,
+        w: 80,
+
+        z: 5,
+        opacity: 0.86,
+        rotate: 0,
+        flicker: true,
+        flickerSpeed: 1.3,
+        framed: true
+      },
+      {
+        src: "https://media1.tenor.com/m/fdu1YydoCxwAAAAd/travel-jet.gif",
+        x: 4,
+        y: 88,
+        w: 20,
+
+        z: 3,
+        opacity: 0.78,
+        rotate: -3,
+        flicker: false,
+        framed: false
+      }
+    ];
+
+    /*
+      ============================================================
+      RENDER
+      ============================================================
+    */
+
+    const scene = document.getElementById("scene");
+    const bg = document.getElementById("bg-image");
+
+    if (BACKGROUND_IMAGE) {
+      bg.style.backgroundImage = `url("${BACKGROUND_IMAGE}")`;
+    }
+
+    IMAGES.forEach((item, index) => {
+      const el = document.createElement("div");
+      el.className = "item";
+
+      if (item.framed) el.classList.add("framed");
+      if (item.flicker) el.classList.add("flicker");
+      if (item.electric) el.classList.add("electric");
+      if (item.floaty) el.classList.add("floaty");
+
+      el.style.left = item.x + "%";
+      el.style.top = item.y + "%";
+      el.style.width = item.w + "vw";
+      el.style.height = item.h + "vh";
+      el.style.zIndex = item.z ?? 1;
+      el.style.opacity = item.opacity ?? 1;
+      el.style.setProperty("--base-opacity", item.opacity ?? 1);
+      el.style.setProperty("--rotation", (item.rotate ?? 0) + "deg");
+      el.style.transform = `rotate(${item.rotate ?? 0}deg)`;
+
+      if (item.flicker) {
+        el.style.animationDuration = (item.flickerSpeed ?? 1.2) + "s";
+      }
+
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = `collage-layer-${index + 1}`;
+
+      el.appendChild(img);
+      scene.appendChild(el);
+    });
+  </script>
+</body>
+</html>
