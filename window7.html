@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacy</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0000FF;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+}
+
+.rain {
+    position: fixed;
+    top: -100px;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-100px) rotate(0deg);
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+  
+<div class="container">
+  
+    <h1>Pharmacy</h1>
+
+    <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Oranges</li>
+        <li>I will do this when I have energy another day like the weekend I hate being employed why can't i have been a gold digger</li>
+    </ul>
+</div>
+
+<script>
+const images = [
+  "https://media.tenor.com/YuQEgpjsLt0AAAAj/pills-3d-model.gif",
+  "https://media.tenor.com/am1a2uOSBVIAAAAj/pandb-pill.gif",
+  "https://media.tenor.com/OEVTTUMeWrEAAAAj/alice-red-tunnel.gif"
+];
+
+function createRain() {
+    const img = document.createElement("img");
+
+    // Pick a random image
+    img.src = images[Math.floor(Math.random() * images.length)];
+
+    img.className = "rain";
+
+    // Random horizontal position
+    img.style.left = Math.random() * window.innerWidth + "px";
+
+    // Random size
+    const size = 20 + Math.random() * 40;
+    img.style.width = size + "px";
+    img.style.height = size + "px";
+
+    // Random fall duration
+    const duration = 3 + Math.random() * 5;
+    img.style.animationDuration = duration + "s";
+
+    document.body.appendChild(img);
+
+    // Remove after animation finishes
+    setTimeout(() => {
+        img.remove();
+    }, duration * 1000);
+}
+
+// Create a new falling image every 200ms
+setInterval(createRain, 200);
+
+</script>
+
+</body>
+</html>
